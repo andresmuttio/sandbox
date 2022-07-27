@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gsap Scrollstrigger</title>
+
+    <style>
+        html{
+            font-family: Roboto;
+        }
+        .section{
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    
+<div class="section">
+    <h1 class="text">Section 1</h1>
+</div>
+<div class="section">
+    <h1 class="text">Section 1</h1>
+</div>
+<div class="section">
+    <h1 class="text">Section 1</h1>
+</div>
+
+
+<footer>
+
+<!-- Gsap Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+<!-- gsap animations-->
+<script>
+    // Register de ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    // Create an array of all the elements with a class
+    const allTexts = gsap.utils.toArray('.text');
+    // create a loop for all the elements, remember to change variable names
+    allTexts.forEach( text => {
+    gsap.to(text, {
+            scrollTrigger:{
+                trigger: text,
+                // onEnter, onLeave, onEnterBack, and onLeaveBack
+                toggleActions: 'restart pause resume pause',
+                start: 'top 70%',
+                markers: true,
+                scrub: 1,
+            },
+            scale: 3,
+            duration: 3
+        })
+    });
+</script>
+
+
+</footer>
+
+</body>
+</html>
